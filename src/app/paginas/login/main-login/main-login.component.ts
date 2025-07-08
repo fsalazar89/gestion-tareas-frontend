@@ -45,4 +45,8 @@ export class MainLoginComponent {
       }
     })
   }
+
+  registroUsuario () {
+    this.router.navigate(['registro']);
+  }
 }

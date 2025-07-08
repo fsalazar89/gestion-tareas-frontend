@@ -1,1 +1,29 @@
-<p>main-registro works!</p>
+<div class="container">
+    <div class="login">
+        <h4 class="text-center mb-3">Registrar Usuario</h4>
+        <form [formGroup]="formularioRegistro" (ngSubmit)="submitForm()">
+            <div class="mb-3">
+                <label for="inputUsuario" class="form-label">Nombre Usuario</label>
+                <input type="text" formControlName="nombre" name="nombre" class="form-control" id="inputUsuario" aria-describedby="usuario" autocomplete="username" placeholder="Ingrese aquí su usuario">
+            </div>
+            <div class="mb-3">
+                <label for="inputUsuario" class="form-label">Usuario</label>
+                <input type="text" formControlName="usuario" name="usuario" class="form-control" id="inputUsuario" aria-describedby="usuario" autocomplete="username" placeholder="Ingrese aquí su usuario">
+            </div>
+            <div class="mb-3">
+                <label for="inputUsuario" class="form-label">Clave</label>
+                <input type="text" formControlName="clave" name="clave" class="form-control" id="inputUsuario" aria-describedby="usuario" autocomplete="username" placeholder="Ingrese aquí su usuario">
+            </div>
+            <div class="mb-3">
+                <label for="inputUsuario" class="form-label">Confirmar Clave</label>
+                <input type="text" formControlName="confirma_clave" name="confirma_clave" class="form-control" id="inputUsuario" aria-describedby="usuario" autocomplete="username" placeholder="Ingrese aquí su usuario">
+            </div>
+            
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn color-boton" [disabled]="formularioRegistro.invalid">
+                    Registrarse
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

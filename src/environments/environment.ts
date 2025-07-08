@@ -5,8 +5,6 @@ export const environment = {
   urlMsTareas: 'http://localhost:8098/api/v1',
   login: {
     rutaLogin: '/admin/autenticacion',
-  },
-  registro: {
     rutaRegistro: '/admin/registrar_usuario',
   },
   tareasa:{
