@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark color-nav fixed-top sticky-top">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ms-5 ms-auto">
+          <li class="nav-item dropdown mx-5">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person-circle"></i> {{ usuario.usuario }}
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#" (click)="borrarDatosSesion()"
+                  >Cerrar Sesion</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>

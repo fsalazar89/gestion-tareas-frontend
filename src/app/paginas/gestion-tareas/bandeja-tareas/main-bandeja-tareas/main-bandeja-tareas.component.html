@@ -1,0 +1,167 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="d-flex">
+            <div class="me-auto p-2"><h4>Bandeja de tareas</h4></div>
+            <div class="p-2">
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaTarea">
+                NuevaTarea
+                </button>
+
+                <!-- Modal Nueva Tarea -->
+                <div class="modal fade" id="nuevaTarea" tabindex="-1" aria-labelledby="nuevaTareaLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="nuevaTareaLabel">Crear Tarea</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-grid gap-2">
+                                <form [formGroup]="formularioCrearTarea" (ngSubmit)="srvCrearTarea()">
+                                    <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Tarea</label>
+                                    <input type="text" class="form-control" formControlName="titulo_tarea" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                                    <textarea class="form-control" formControlName="descripcion_tarea" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Vence</label>
+                                    <input type="date" class="form-control" formControlName="fecha_vencimiento" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+                                </form>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row seccion_pagina">
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">FechaCreacion</th>
+                    <th scope="col">FechaVencimiento</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (tarea of listaTareas; track $index) {
+
+                <tr>
+                    <td>{{tarea.titulo_tarea}}</td>
+                    <td>{{tarea.descripcion_tarea}}</td>
+                    <td>{{tarea.fecha_creacion_tarea}}</td>
+                    <td>{{tarea.fecha_vencimiento_tarea}}</td>
+                    <td>
+                        <span class="badge text-bg-primary">{{tarea.nombre_estado}}</span>
+                    </td>
+                    <td>
+                        <i class="bi bi-card-checklist icon-acciones text-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#cambioEstado'+tarea.id_tarea"></i>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="cambioEstado{{tarea.id_tarea}}" tabindex="-1" aria-labelledby="cambioEstadoLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="cambioEstadoLabel">Cambiar Estado {{tarea.id_tarea}}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="d-grid gap-2">
+                                        <form [formGroup]="formularioEstados">
+                                            <input type="radio" class="btn-check mt-1" formControlName="estado" name="estado" id="creada{{tarea.id_tarea}}" autocomplete="off" checked [value]="tarea.id_estado">
+                                            <label class="btn btn-outline-primary" for="creada{{tarea.id_tarea}}">CREADA</label>
+
+                                            <input type="radio" class="btn-check mt-1" formControlName="estado" name="estado" id="en-progreso{{tarea.id_tarea}}" autocomplete="off" [value]="tarea.id_estado">
+                                            <label class="btn btn-outline-primary" for="en-progreso{{tarea.id_tarea}}">EN PROGRESO</label>
+                                        
+                                            <input type="radio" class="btn-check mt-1" formControlName="estado" name="estado" id="Completa{{tarea.id_tarea}}" autocomplete="off" [value]="tarea.id_estado">
+                                            <label class="btn btn-outline-primary" for="Completa{{tarea.id_tarea}}">COMPLETA</label>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <i class="bi bi-arrow-down-up icon-acciones text-success" data-bs-toggle="modal" data-bs-target="#consultarRegistro"></i>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="consultarRegistro" tabindex="-1" aria-labelledby="consultarRegistroLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="consultarRegistroLabel">Consultar Registro</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Caso xxxxxxxxxxxxxxxxxxx</h5>
+                                    <p>Registro 1</p>
+                                    <p>Registro 2</p>
+                                    <p>Registro 3</p>
+                                    <p>Registro 4</p>
+                                    <p>Registro 5</p>
+                                    <p>Registro 6</p>
+                                    <p>Registro 7</p>
+                                    <p>Registro 8</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <i class="bi bi-trash3 icon-acciones text-danger" data-bs-toggle="modal" data-bs-target="#consultarRegistro"></i>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="consultarRegistro" tabindex="-1" aria-labelledby="consultarRegistroLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="consultarRegistroLabel">Consultar Registro</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Caso xxxxxxxxxxxxxxxxxxx</h5>
+                                    <p>Registro 1</p>
+                                    <p>Registro 2</p>
+                                    <p>Registro 3</p>
+                                    <p>Registro 4</p>
+                                    <p>Registro 5</p>
+                                    <p>Registro 6</p>
+                                    <p>Registro 7</p>
+                                    <p>Registro 8</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

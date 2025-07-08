@@ -1,0 +1,45 @@
+.container{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+}
+.login{
+    width: 350px;
+    height: 380px;
+    padding: 30px;
+    margin: auto;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.685);
+    border-radius: 15px;
+}
+.logo{
+    display: grid;
+    padding: 15px;
+}
+.logo img{
+    width: 200px;
+    margin: auto;
+}
+button{
+    background-color: #1860cb;
+    color: rgb(255, 255, 255);
+}
+.input-group-text{
+    cursor: pointer;
+}
+.btn:disabled {
+    background-color: #1860cb;
+    color: rgb(255, 255, 255);
+    opacity: 0.5; /* Ajusta este valor a tu gusto */
+}
+.btn:hover {
+    background-color: #1860cb;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px 0 rgba(25, 63, 234, 0.685);
+}
+span{
+    font-size: 12px;
+}
+.validacion{
+    display: flex; 
+    flex-direction: column;
+}

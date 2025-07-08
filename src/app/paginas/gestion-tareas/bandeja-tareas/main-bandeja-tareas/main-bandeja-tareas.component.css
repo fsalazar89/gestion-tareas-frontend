@@ -1,0 +1,32 @@
+.seccion_pagina {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .table{
+    font-size: 12px;
+  }
+
+  .goBack{
+    cursor: pointer;
+  }
+
+  .botones-form{
+    margin-top: 32px;
+    margin-left: 10px;
+  }
+
+  .botones-form{
+    margin-top: 32px;
+    margin-left: 10px;
+  }
+
+  .icon-acciones{
+    cursor: pointer;
+    margin-left: 10px;
+  }
